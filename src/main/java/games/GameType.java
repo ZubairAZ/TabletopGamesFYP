@@ -2,6 +2,10 @@ package games;
 
 import core.*;
 import core.rules.AbstractRuleBasedForwardModel;
+import games.azul.AzulForwardModel;
+import games.azul.gui.AzulGUIManager;
+import games.azul.AzulGameParameters;
+import games.azul.AzulGameState;
 import games.battlelore.*;
 import games.battlelore.gui.BattleloreGUI;
 import games.blackjack.*;
@@ -74,6 +78,7 @@ import org.apache.commons.lang3.reflect.ConstructorUtils;
 import players.human.ActionController;
 import players.human.HumanGUIPlayer;
 
+import java.io.Console;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -214,7 +219,11 @@ public enum GameType {
     WarOfTheToads(2, 2,
             Arrays.asList(Strategy, Abstract, Cards),
             Collections.singletonList(TrickTaking),
-            ToadGameState.class, ToadForwardModel.class, ToadParameters.class, ToadGUIManager.class);
+            ToadGameState.class, ToadForwardModel.class, ToadParameters.class, ToadGUIManager.class),
+    Azul(2, 4,
+            Arrays.asList(),
+            Arrays.asList(),
+            AzulGameState.class, AzulForwardModel.class, AzulGameParameters.class, AzulGUIManager.class);
 
 
     // Core classes where the game is defined
@@ -279,6 +288,7 @@ public enum GameType {
         if (gameStateClass == null) throw new AssertionError("No game state class declared for the game: " + this);
         try {
             Constructor<?> constructorGS = ConstructorUtils.getMatchingAccessibleConstructor(gameStateClass, AbstractParameters.class, Integer.class);
+            System.out.println(constructorGS);
             return (AbstractGameState) constructorGS.newInstance(params, nPlayers);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
