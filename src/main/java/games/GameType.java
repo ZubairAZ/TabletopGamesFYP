@@ -221,9 +221,10 @@ public enum GameType {
             Collections.singletonList(TrickTaking),
             ToadGameState.class, ToadForwardModel.class, ToadParameters.class, ToadGUIManager.class),
     Azul(2, 4,
-            Arrays.asList(),
-            Arrays.asList(),
-            AzulGameState.class, AzulForwardModel.class, AzulGameParameters.class, AzulGUIManager.class);
+            Arrays.asList(Strategy, Abstract, TerritoryBuilding),
+            Arrays.asList(PatternBuilding, TilePlacement, SetCollection, Drafting),
+            AzulGameState.class, AzulForwardModel.class, AzulGameParameters.class, AzulGUIManager.class,
+            "data/azul/");
 
 
     // Core classes where the game is defined

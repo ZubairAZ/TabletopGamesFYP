@@ -12,10 +12,37 @@ public class AzulGameParameters extends AbstractParameters {
     private final int nColumns;  // Size of wall grid
     private final int bonusPoints;  // Points for completing a row/column/set
     private final int penaltyPerFloorTile;  // Penalty points per floor tile
+    public String dataPath = "data/azul/";  // Path to game data
+    private int nPlayers = 2;  // Default number of players
 
     public AzulGameParameters(long seed) {
         super();
         this.setRandomSeed(seed);
+        // Default values for a standard game of Azul
+        this.nTilesPerFactory = 4;
+        this.nTilesPerType = 20;  // 20 of each color
+        this.nRows = 5;
+        this.nColumns = 5;
+        this.bonusPoints = 2;
+        this.penaltyPerFloorTile = -1;
+    }
+    
+    public AzulGameParameters(String dataPath) {
+        super();
+        this.dataPath = dataPath;
+        // Default values for a standard game of Azul
+        this.nTilesPerFactory = 4;
+        this.nTilesPerType = 20;  // 20 of each color
+        this.nRows = 5;
+        this.nColumns = 5;
+        this.bonusPoints = 2;
+        this.penaltyPerFloorTile = -1;
+    }
+    
+    public AzulGameParameters(String dataPath, long seed) {
+        super();
+        this.setRandomSeed(seed);
+        this.dataPath = dataPath;
         // Default values for a standard game of Azul
         this.nTilesPerFactory = 4;
         this.nTilesPerType = 20;  // 20 of each color
@@ -32,6 +59,10 @@ public class AzulGameParameters extends AbstractParameters {
     public int getNColumns() { return nColumns; }
     public int getBonusPoints() { return bonusPoints; }
     public int getPenaltyPerFloorTile() { return penaltyPerFloorTile; }
+    public String getDataPath() { return dataPath; }
+    public void setDataPath(String dataPath) { this.dataPath = dataPath; }
+    public int getNPlayers() { return nPlayers; }
+    public void setNPlayers(int nPlayers) { this.nPlayers = nPlayers; }
 
     @Override
     protected AbstractParameters _copy() {
@@ -39,6 +70,8 @@ public class AzulGameParameters extends AbstractParameters {
         params.setMaxRounds(getMaxRounds());
         params.setTimeoutRounds(getTimeoutRounds());
         params.setThinkingTimeMins(getThinkingTimeMins());
+        params.dataPath = this.dataPath;
+        params.nPlayers = this.nPlayers;
         return params;
     }
 
@@ -52,12 +85,19 @@ public class AzulGameParameters extends AbstractParameters {
                 nRows == other.nRows &&
                 nColumns == other.nColumns &&
                 bonusPoints == other.bonusPoints &&
-                penaltyPerFloorTile == other.penaltyPerFloorTile;
+                penaltyPerFloorTile == other.penaltyPerFloorTile &&
+                nPlayers == other.nPlayers &&
+                Objects.equals(dataPath, other.dataPath);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(nTilesPerFactory, nTilesPerType,
-                nRows, nColumns, bonusPoints, penaltyPerFloorTile);
+                nRows, nColumns, bonusPoints, penaltyPerFloorTile,
+                dataPath, nPlayers);
+    }
+    
+    public Object instantiate() {
+        return new AzulGameState(this, nPlayers);
     }
 }
