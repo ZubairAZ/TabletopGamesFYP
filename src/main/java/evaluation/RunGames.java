@@ -2,6 +2,7 @@ package evaluation;
 
 import core.AbstractParameters;
 import core.AbstractPlayer;
+import core.Game;
 import core.interfaces.IGameRunner;
 import evaluation.listeners.IGameListener;
 import evaluation.tournaments.RoundRobinTournament;
@@ -82,11 +83,35 @@ public class RunGames implements IGameRunner {
         if (!runGames.config.get(playerDirectory).equals("")) {
             agents.addAll(PlayerFactory.createPlayers((String) runGames.config.get(playerDirectory)));
         } else {
-       //     agents.add(new MCTSPlayer());
-            agents.add(new BasicMCTSPlayer());
-            agents.add(new RandomPlayer());
-            agents.add(new RMHCPlayer());
-            agents.add(new OSLAPlayer());
+            // Create a temporary game to get the forward model
+            GameType gameType = GameType.valueOf(runGames.config.get(RunArg.game).toString().split("\\|")[0]);
+            String paramFile = runGames.config.get(gameParams).equals("") ? null : (String) runGames.config.get(gameParams);
+            
+            // Create dummy players for the temporary game
+            List<AbstractPlayer> dummyPlayers = new ArrayList<>();
+            for (int i = 0; i < 2; i++) {  // Use 2 players as default
+                dummyPlayers.add(new RandomPlayer());
+            }
+            
+            // Create a temporary game to get the forward model
+            Game tempGame = Game.runOne(gameType, paramFile, dummyPlayers, System.currentTimeMillis(), false, null, null, 0);
+            
+            // Create and set up players with forward model
+            BasicMCTSPlayer mcts = new BasicMCTSPlayer();
+            mcts.setForwardModel(tempGame.getForwardModel());
+            agents.add(mcts);
+            
+            RandomPlayer random = new RandomPlayer();
+            random.setForwardModel(tempGame.getForwardModel());
+            agents.add(random);
+            
+            RMHCPlayer rmhc = new RMHCPlayer();
+            rmhc.setForwardModel(tempGame.getForwardModel());
+            agents.add(rmhc);
+            
+            OSLAPlayer osla = new OSLAPlayer();
+            osla.setForwardModel(tempGame.getForwardModel());
+            agents.add(osla);
         }
         runGames.agents = agents;
 

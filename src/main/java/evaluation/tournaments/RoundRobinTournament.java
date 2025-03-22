@@ -318,8 +318,11 @@ public class RoundRobinTournament extends AbstractTournament {
         LinkedList<AbstractPlayer> matchUpPlayers = new LinkedList<>();
 
         // create a copy of the player to avoid them sharing the same state
-        for (int agentID : agentIDsInThisGame)
-            matchUpPlayers.add(this.agents.get(agentID).copy());
+        for (int agentID : agentIDsInThisGame) {
+            AbstractPlayer playerCopy = this.agents.get(agentID).copy();
+            playerCopy.setForwardModel(game.getForwardModel().copy());
+            matchUpPlayers.add(playerCopy);
+        }
 
         if (verbose) {
             StringBuffer sb = new StringBuffer();

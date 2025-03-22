@@ -16,7 +16,7 @@ import java.util.*;
 
 public class AzulForwardModel extends AbstractForwardModel {
     // Debug flag - set to true to enable detailed debug output
-    private static final boolean DEBUG_MODE = true;
+    private static final boolean DEBUG_MODE = false;
     
     @Override
     protected void _setup(AbstractGameState firstState) {
@@ -83,30 +83,124 @@ public class AzulForwardModel extends AbstractForwardModel {
 
     private void fillFactories(AzulGameState state) {
         AzulGameParameters params = (AzulGameParameters) state.getGameParameters();
-        for (int i = 0; i < state.getFactories().size(); i++) {
+        int totalTilesAvailable = state.getTileBag().getSize() + state.getDiscardBag().getSize();
+        
+        if (DEBUG_MODE) {
+            System.out.println("Total tiles available: " + totalTilesAvailable);
+        }
+        
+        // Move tiles from discard bag to tile bag if needed
+        if (state.getTileBag().getSize() < totalTilesAvailable) {
+            if (DEBUG_MODE) {
+                System.out.println("Moving tiles from discard bag to tile bag");
+            }
+            while (state.getDiscardBag().getSize() > 0) {
+                state.getTileBag().add(state.getDiscardBag().draw());
+            }
+            state.getTileBag().shuffle(state.getRnd());
+        }
+        
+        // Fill factories with available tiles
+        int tilesPerFactory = params.getNTilesPerFactory();
+        int totalFactories = state.getFactories().size();
+        int totalTilesNeeded = totalFactories * tilesPerFactory;
+        
+        if (DEBUG_MODE) {
+            System.out.println("Tiles per factory: " + tilesPerFactory);
+            System.out.println("Total factories: " + totalFactories);
+            System.out.println("Total tiles needed: " + totalTilesNeeded);
+        }
+        
+        // Calculate how many complete factories we can fill
+        int completeFactories = Math.min(totalFactories, totalTilesAvailable / tilesPerFactory);
+        int remainingTiles = totalTilesAvailable % tilesPerFactory;
+        
+        if (DEBUG_MODE) {
+            System.out.println("Complete factories to fill: " + completeFactories);
+            System.out.println("Remaining tiles: " + remainingTiles);
+        }
+        
+        // Fill complete factories first
+        for (int i = 0; i < completeFactories; i++) {
             GridBoard<AzulTile> factory = state.getFactories().get(i);
-            for (int j = 0; j < params.getNTilesPerFactory(); j++) {
-                if (state.getTileBag().getSize() > 0) {
-                    for (int row = 0; row < factory.getHeight(); row++) {
-                        for (int col = 0; col < factory.getWidth(); col++) {
-                            if (factory.getElement(col, row) == null) {
-                                factory.setElement(col, row, state.getTileBag().draw());
-                                break;
-                            }
+            for (int j = 0; j < tilesPerFactory; j++) {
+                for (int row = 0; row < factory.getHeight(); row++) {
+                    for (int col = 0; col < factory.getWidth(); col++) {
+                        if (factory.getElement(col, row) == null) {
+                            factory.setElement(col, row, state.getTileBag().draw());
+                            break;
                         }
                     }
                 }
             }
         }
         
-        // Add first player token to centre pool at the beginning of each round
-        state.addFirstPlayerTokenToCenter();
+        // Fill remaining tiles in the next factory if any
+        if (remainingTiles > 0 && completeFactories < totalFactories) {
+            GridBoard<AzulTile> factory = state.getFactories().get(completeFactories);
+            for (int j = 0; j < remainingTiles; j++) {
+                for (int row = 0; row < factory.getHeight(); row++) {
+                    for (int col = 0; col < factory.getWidth(); col++) {
+                        if (factory.getElement(col, row) == null) {
+                            factory.setElement(col, row, state.getTileBag().draw());
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         
         if (DEBUG_MODE) {
             System.out.println("\n===== FACTORIES FILLED =====");
-            System.out.println("First player token added to centre pool");
             state.printDebugInfo();
         }
+    }
+
+    @Override
+    protected List<AbstractAction> _computeAvailableActions(AbstractGameState gameState) {
+        AzulGameState state = (AzulGameState) gameState;
+        List<AbstractAction> actions = new ArrayList<>();
+        int currentPlayer = gameState.getCurrentPlayer();
+
+        // If the game is over, return a dummy action to prevent RMHC errors
+        if (gameState.getGameStatus() != CoreConstants.GameResult.GAME_ONGOING) {
+            if (DEBUG_MODE) {
+                System.out.println("Game is over - returning dummy action");
+            }
+            actions.add(new TakeTilesAction(currentPlayer, -1, TakeTilesAction.getFloorLine(), AzulTile.TileType.BLUE));
+            return actions;
+        }
+
+        // Check if all factories and center are empty
+        boolean allFactoriesEmpty = areFactoriesAndCenterEmpty(state);
+        
+        if (allFactoriesEmpty) {
+            if (DEBUG_MODE) {
+                System.out.println("All factories and center are empty - transitioning to wall tiling phase");
+            }
+            state.setPhase(AzulGameState.GamePhase.WALL_TILING);
+            // Don't add any actions when transitioning to wall tiling phase
+            return actions;
+        }
+        
+        // If in wall tiling phase, return a dummy action to prevent RMHC errors
+        if (state.getPhase() == AzulGameState.GamePhase.WALL_TILING) {
+            if (DEBUG_MODE) {
+                System.out.println("In wall tiling phase - returning dummy action");
+            }
+            actions.add(new TakeTilesAction(currentPlayer, -1, TakeTilesAction.getFloorLine(), AzulTile.TileType.BLUE));
+            return actions;
+        }
+
+        // Factory actions
+        for (int f = 0; f < state.getFactories().size(); f++) {
+            addFactoryActions(state, actions, f, currentPlayer);
+        }
+
+        // Centre pool actions
+        addCenterPoolActions(state, actions, currentPlayer);
+
+        return actions;
     }
 
     @Override
@@ -114,65 +208,128 @@ public class AzulForwardModel extends AbstractForwardModel {
         if (currentState.isActionInProgress()) return;
 
         AzulGameState state = (AzulGameState) currentState;
-        if (action instanceof TakeTilesAction) {
-            executeTakeTilesAction(state, (TakeTilesAction) action);
+        if (DEBUG_MODE) {
+            System.out.println("\n===== BEFORE ACTION EXECUTION =====");
+            System.out.println("Current phase: " + state.getPhase());
+            System.out.println("Current player: " + state.getCurrentPlayer());
+            System.out.println("Action: " + action.toString());
+        }
+        
+        // Handle wall tiling phase first
+        if (state.getPhase() == AzulGameState.GamePhase.WALL_TILING) {
+            // Move tiles from pattern lines to walls
+            movePatternLinesToWalls(state);
             
             if (DEBUG_MODE) {
-                System.out.println("\n===== AFTER TAKE TILES ACTION =====");
-                System.out.println("Action: " + action.toString());
+                System.out.println("\n===== END OF ROUND - AFTER MOVING TILES TO WALLS =====");
+                System.out.println("Current phase: " + state.getPhase());
                 state.printDebugInfo();
             }
             
-            // Check if all factories and centre are empty
-            boolean allEmpty = true;
-            for (GridBoard<AzulTile> factory : state.getFactories()) {
-                if (!isFactoryEmpty(factory)) {
-                    allEmpty = false;
+            // Check if game is over (any player has a complete row)
+            boolean gameOver = false;
+            for (Wall wall : state.getPlayerWalls()) {
+                if (wall.getCompletedRows() > 0) {
+                    gameOver = true;
                     break;
                 }
             }
             
-            if (allEmpty && state.getCenterPool().isEmpty()) {
-                // End of round, move tiles from pattern lines to walls
-                movePatternLinesToWalls(state);
+            if (gameOver) {
+                // Game is over, calculate final scores
+                calculateFinalScores(state);
                 
                 if (DEBUG_MODE) {
-                    System.out.println("\n===== END OF ROUND - AFTER MOVING TILES TO WALLS =====");
+                    System.out.println("\n===== GAME OVER - FINAL SCORES =====");
+                    System.out.println("Setting game status to GAME_END");
                     state.printDebugInfo();
                 }
                 
-                // Check if game is over (any player has a complete row)
-                boolean gameOver = false;
-                for (Wall wall : state.getPlayerWalls()) {
-                    if (wall.getCompletedRows() > 0) {
-                        gameOver = true;
-                        break;
-                    }
-                }
-                
-                if (gameOver) {
-                    // Game is over, calculate final scores
-                    calculateFinalScores(state);
-                    
-                    if (DEBUG_MODE) {
-                        System.out.println("\n===== GAME OVER - FINAL SCORES =====");
-                        state.printDebugInfo();
-                    }
-                    
-                    // Set game status to game over
-                    state.setGameStatus(CoreConstants.GameResult.GAME_END);
-                } else {
-                    // Prepare for next round
-                    prepareNextRound(state);
-                    
-                    if (DEBUG_MODE) {
-                        System.out.println("\n===== NEW ROUND PREPARED =====");
-                        state.printDebugInfo();
-                    }
-                }
+                // Set game status to game over
+                state.setGameStatus(CoreConstants.GameResult.GAME_END);
             } else {
-                // End the current player's turn if the round is not over
-                endPlayerTurn(state);
+                // Prepare for next round
+                prepareNextRound(state);
+                
+                if (DEBUG_MODE) {
+                    System.out.println("\n===== NEW ROUND PREPARED =====");
+                    System.out.println("Current phase: " + state.getPhase());
+                    System.out.println("Current player: " + state.getCurrentPlayer());
+                    state.printDebugInfo();
+                }
+            }
+            return;
+        }
+        
+        // Handle tile picking phase
+        if (action instanceof TakeTilesAction) {
+            // Execute the action
+            boolean success = action.execute(state);
+            
+            if (DEBUG_MODE) {
+                System.out.println("\n===== AFTER TAKE TILES ACTION =====");
+                System.out.println("Action: " + action.toString());
+                System.out.println("Current phase: " + state.getPhase());
+                state.printDebugInfo();
+            }
+            
+            if (success) {
+                // Check if all factories and centre are empty after action
+                boolean allEmpty = areFactoriesAndCenterEmpty(state);
+                
+                if (allEmpty) {
+                    if (DEBUG_MODE) {
+                        System.out.println("All factories and center are empty - performing wall tiling immediately");
+                    }
+                    
+                    // Check if there are any tiles in pattern lines that can be moved to walls
+                    boolean hasTilesToMove = false;
+                    for (int player = 0; player < state.getNPlayers(); player++) {
+                        PatternLine[] lines = state.getPatternLines(player);
+                        for (PatternLine line : lines) {
+                            if (line.getCount() > 0) {
+                                hasTilesToMove = true;
+                                break;
+                            }
+                        }
+                        if (hasTilesToMove) break;
+                    }
+                    
+                    if (hasTilesToMove) {
+                        // Perform wall tiling immediately
+                        movePatternLinesToWalls(state);
+                        
+                        // Check if game is over
+                        boolean gameOver = false;
+                        for (Wall wall : state.getPlayerWalls()) {
+                            if (wall.getCompletedRows() > 0) {
+                                gameOver = true;
+                                break;
+                            }
+                        }
+                        
+                        if (gameOver) {
+                            calculateFinalScores(state);
+                            state.setGameStatus(CoreConstants.GameResult.GAME_END);
+                        } else {
+                            prepareNextRound(state);
+                        }
+                    } else {
+                        // No tiles to move to walls, prepare for next round immediately
+                        if (DEBUG_MODE) {
+                            System.out.println("No tiles to move to walls - preparing for next round");
+                        }
+                        prepareNextRound(state);
+                    }
+                } else {
+                    // End the current player's turn if the round is not over
+                    endPlayerTurn(state);
+                    
+                    if (DEBUG_MODE) {
+                        System.out.println("\n===== PLAYER TURN ENDED =====");
+                        System.out.println("Next player: " + state.getCurrentPlayer());
+                    }
+                }
             }
         }
     }
@@ -205,92 +362,6 @@ public class AzulForwardModel extends AbstractForwardModel {
     }
     
     @Override
-    protected List<AbstractAction> _computeAvailableActions(AbstractGameState gameState) {
-        AzulGameState state = (AzulGameState) gameState;
-        List<AbstractAction> actions = new ArrayList<>();
-        int currentPlayer = gameState.getCurrentPlayer();
-
-        // Factory actions
-        for (int f = 0; f < state.getFactories().size(); f++) {
-            addFactoryActions(state, actions, f, currentPlayer);
-        }
-
-        // Centre pool actions
-        addCenterPoolActions(state, actions, currentPlayer);
-
-        return actions;
-    }
-    
-    private void addFactoryActions(AzulGameState state, List<AbstractAction> actions, int factoryId, int currentPlayer) {
-        GridBoard<AzulTile> factory = state.getFactories().get(factoryId);
-        Set<AzulTile.TileType> availableTypes = new HashSet<>();
-
-        // Collect available tile types
-        for (int i = 0; i < factory.getHeight(); i++) {
-            for (int j = 0; j < factory.getWidth(); j++) {
-                AzulTile tile = factory.getElement(i, j);
-                if (tile != null) availableTypes.add(tile.getTileType());
-            }
-        }
-
-        // Create actions for each type and valid pattern line
-        for (AzulTile.TileType type : availableTypes) {
-            // Add actions for pattern lines
-            Wall playerWall = state.getPlayerWall(currentPlayer);
-            
-            for (int line = 0; line < state.getPatternLines(currentPlayer).length; line++) {
-                PatternLine patternLine = state.getPatternLines(currentPlayer)[line];
-                
-                // Check if the pattern line can accept this tile type
-                if (patternLine.canAdd(new AzulTile(type))) {
-                    // Check if the corresponding wall spot is already filled
-                    int col = playerWall.getColumnForColor(line, type);
-                    if (col != -1 && !playerWall.isTilePlaced(line, col)) {
-                        actions.add(new TakeTilesAction(currentPlayer, factoryId, line, type));
-                    }
-                }
-            }
-            
-            // Add action for floor line (always an option)
-            actions.add(new TakeTilesAction(currentPlayer, factoryId, TakeTilesAction.getFloorLine(), type));
-        }
-    }
-    
-    private void addCenterPoolActions(AzulGameState state, List<AbstractAction> actions, int currentPlayer) {
-        List<AzulTile> centerPool = state.getCenterPool();
-        Set<AzulTile.TileType> availableTypes = new HashSet<>();
-
-        // Collect available tile types from centre
-        for (AzulTile tile : centerPool) {
-            if (tile != null && tile.getTileType() != null) {
-                availableTypes.add(tile.getTileType());
-            }
-        }
-
-        // Create actions for each type and valid pattern line
-        for (AzulTile.TileType type : availableTypes) {
-            // Add actions for pattern lines
-            Wall playerWall = state.getPlayerWall(currentPlayer);
-            
-            for (int line = 0; line < state.getPatternLines(currentPlayer).length; line++) {
-                PatternLine patternLine = state.getPatternLines(currentPlayer)[line];
-                
-                // Check if the pattern line can accept this tile type
-                if (patternLine.canAdd(new AzulTile(type))) {
-                    // Check if the corresponding wall spot is already filled
-                    int col = playerWall.getColumnForColor(line, type);
-                    if (col != -1 && !playerWall.isTilePlaced(line, col)) {
-                        actions.add(new TakeTilesAction(currentPlayer, -1, line, type));
-                    }
-                }
-            }
-            
-            // Add action for floor line (always an option)
-            actions.add(new TakeTilesAction(currentPlayer, -1, TakeTilesAction.getFloorLine(), type));
-        }
-    }
-    
-    @Override
     protected AbstractForwardModel _copy() {
         return new AzulForwardModel();
     }
@@ -309,34 +380,90 @@ public class AzulForwardModel extends AbstractForwardModel {
     
     // Move tiles from pattern lines to walls at the end of a round
     private void movePatternLinesToWalls(AzulGameState state) {
+        if (DEBUG_MODE) {
+            System.out.println("\n===== MOVING TILES TO WALLS =====");
+            System.out.println("Current phase: " + state.getPhase());
+            System.out.println("Current player: " + state.getCurrentPlayer());
+        }
+
+        // Move tiles from pattern lines to walls for each player
         for (int player = 0; player < state.getNPlayers(); player++) {
             PatternLine[] lines = state.getPatternLines(player);
             Wall wall = state.getPlayerWall(player);
-
-            // Score completed pattern lines
-            for (int i = 0; i < lines.length; i++) {
-                if (lines[i].isFull()) {
-                    AzulTile.TileType type = lines[i].getCurrentType();
-                    if (wall.canPlaceTile(i, type)) {
-                        wall.placeTile(i, type);
-                        scoreWallPlacement(state, player, i, wall.getColumnForColor(i, type));
-                        lines[i].clear();
+            
+            for (int row = 0; row < lines.length; row++) {
+                PatternLine line = lines[row];
+                if (line.getCount() > 0) {
+                    // Get the column for this tile type in this row
+                    AzulTile.TileType tileType = line.getCurrentType();
+                    if (wall.canPlaceTile(row, tileType)) {
+                        // Place tile on wall
+                        wall.placeTile(row, tileType);
+                        
+                        // Calculate score for this tile
+                        int col = wall.getColumnForColor(row, tileType);
+                        int score = calculateTileScore(wall, row, col);
+                        state.getScore(player).increment(score);
+                        
+                        if (DEBUG_MODE) {
+                            System.out.println("Player " + player + " placed tile of type " + tileType + 
+                                            " at row " + row + ", col " + col + " for " + score + " points");
+                        }
+                        
+                        // Get all tiles from the pattern line and discard them except the one placed
+                        AzulTile[] tiles = line.getTiles();
+                        for (AzulTile tile : tiles) {
+                            if (tile != null) {
+                                state.getDiscardBag().add(tile);
+                            }
+                        }
+                        
+                        // Clear the pattern line
+                        line.clear();
                     }
                 }
             }
-
-            // Apply floor penalties
-            applyFloorPenalties(state, player);
+            
+            // Apply floor line penalties
+            int floorPenalty = state.getFloorLine(player).getValue() * 
+                             ((AzulGameParameters)state.getGameParameters()).getPenaltyPerFloorTile();
+            state.getScore(player).increment(floorPenalty);
+            
+            if (DEBUG_MODE) {
+                System.out.println("Player " + player + " floor line penalty: " + floorPenalty);
+            }
+            
+            // Clear floor line
+            state.getFloorLine(player).setValue(0);
+        }
+        
+        // Check if any player has completed a row
+        boolean gameOver = false;
+        for (Wall wall : state.getPlayerWalls()) {
+            if (wall.getCompletedRows() > 0) {
+                gameOver = true;
+                break;
+            }
+        }
+        
+        if (gameOver) {
+            if (DEBUG_MODE) {
+                System.out.println("Game over - a player has completed a row");
+            }
+            state.setGameStatus(CoreConstants.GameResult.GAME_END);
+        } else {
+            if (DEBUG_MODE) {
+                System.out.println("No completed rows - preparing for next round");
+            }
+            prepareNextRound(state);
         }
     }
     
-    private void scoreWallPlacement(AzulGameState state, int player, int row, int col) {
+    private int calculateTileScore(Wall wall, int row, int col) {
         int points = 1;
-        points += countAdjacentTiles(state.getPlayerWall(player), row, col, true);
-        points += countAdjacentTiles(state.getPlayerWall(player), row, col, false);
-        if (points > 1) {  // Only add points if there are adjacent tiles
-            state.getScore(player).increment(points);
-        }
+        points += countAdjacentTiles(wall, row, col, true);
+        points += countAdjacentTiles(wall, row, col, false);
+        return points > 1 ? points : 0;
     }
     
     private int countAdjacentTiles(Wall wall, int row, int col, boolean horizontal) {
@@ -349,13 +476,6 @@ public class AzulForwardModel extends AbstractForwardModel {
             for (int r = row + 1; r < 5 && wall.isTilePlaced(r, col); r++) count++;
         }
         return count;
-    }
-    
-    private void applyFloorPenalties(AzulGameState state, int player) {
-        int floorTiles = state.getFloorLine(player).getValue();
-        int penalty = calculateFloorPenalty(floorTiles);
-        state.getScore(player).increment(penalty);
-        state.getFloorLine(player).setValue(0);
     }
     
     // Calculate final scores at the end of the game
@@ -428,24 +548,133 @@ public class AzulForwardModel extends AbstractForwardModel {
         // Reset to tile picking phase
         state.setPhase(AzulGameState.GamePhase.TILE_PICKING);
         
-        // Move first player token to the player who took the first player marker
-        int firstPlayer = state.getFirstPlayer();
-        state.setTurnOwner(firstPlayer);
+        // Set the current player to the first player
+        state.setTurnOwner(state.getFirstPlayer());
         
         if (DEBUG_MODE) {
-            System.out.println("Setting first player for new round to: " + firstPlayer);
+            System.out.println("Setting first player for new round to: " + state.getFirstPlayer());
         }
         
-        // Refill factories from tile bag, using discard bag if needed
-        if (state.getTileBag().getSize() < state.getFactories().size() * 4) {
-            // Move tiles from discard bag to tile bag if needed
-            while (state.getDiscardBag().getSize() > 0) {
-                state.getTileBag().add(state.getDiscardBag().draw());
+        // Check if we have any tiles available
+        int totalTilesAvailable = state.getTileBag().getSize() + state.getDiscardBag().getSize();
+        
+        if (totalTilesAvailable == 0) {
+            if (DEBUG_MODE) {
+                System.out.println("No tiles available to continue the game");
+                System.out.println("Tile bag: " + state.getTileBag().getSize());
+                System.out.println("Discard bag: " + state.getDiscardBag().getSize());
             }
-            state.getTileBag().shuffle(state.getRnd());
+            // End the game only if we have no tiles at all
+            state.setGameStatus(CoreConstants.GameResult.GAME_END);
+            return;
         }
         
-        // Fill factories with tiles
+        // Fill factories with available tiles (can be incomplete)
         fillFactories(state);
+        
+        if (DEBUG_MODE) {
+            System.out.println("New round prepared");
+            System.out.println("Tile bag: " + state.getTileBag().getSize());
+            System.out.println("Discard bag: " + state.getDiscardBag().getSize());
+        }
+    }
+
+    // Helper method to check if all factories and center pool are empty
+    private boolean areFactoriesAndCenterEmpty(AzulGameState state) {
+        // Check factories
+        for (GridBoard<AzulTile> factory : state.getFactories()) {
+            if (hasAnyTiles(factory)) return false;
+        }
+
+        // Check centre pool - consider it empty if it only contains the first player token
+        List<AzulTile> centerPool = state.getCenterPool();
+        if (centerPool.isEmpty()) {
+            return true;
+        }
+        
+        // If there's only one tile and it's the first player token, consider it empty
+        if (centerPool.size() == 1 && centerPool.get(0).getTileType() == null) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    private boolean hasAnyTiles(GridBoard<AzulTile> board) {
+        for (int i = 0; i < board.getHeight(); i++) {
+            for (int j = 0; j < board.getWidth(); j++) {
+                if (board.getElement(i, j) != null) return true;
+            }
+        }
+        return false;
+    }
+
+    private void addFactoryActions(AzulGameState state, List<AbstractAction> actions, int factoryId, int currentPlayer) {
+        GridBoard<AzulTile> factory = state.getFactories().get(factoryId);
+        Set<AzulTile.TileType> availableTypes = new HashSet<>();
+
+        // Collect available tile types
+        for (int i = 0; i < factory.getHeight(); i++) {
+            for (int j = 0; j < factory.getWidth(); j++) {
+                AzulTile tile = factory.getElement(i, j);
+                if (tile != null) availableTypes.add(tile.getTileType());
+            }
+        }
+
+        // Create actions for each type and valid pattern line
+        for (AzulTile.TileType type : availableTypes) {
+            // Add actions for pattern lines
+            Wall playerWall = state.getPlayerWall(currentPlayer);
+            
+            for (int line = 0; line < state.getPatternLines(currentPlayer).length; line++) {
+                PatternLine patternLine = state.getPatternLines(currentPlayer)[line];
+                
+                // Check if the pattern line can accept this tile type
+                if (patternLine.canAdd(new AzulTile(type))) {
+                    // Check if the corresponding wall spot is already filled
+                    int col = playerWall.getColumnForColor(line, type);
+                    if (col != -1 && !playerWall.isTilePlaced(line, col)) {
+                        actions.add(new TakeTilesAction(currentPlayer, factoryId, line, type));
+                    }
+                }
+            }
+            
+            // Add action for floor line (always an option)
+            actions.add(new TakeTilesAction(currentPlayer, factoryId, TakeTilesAction.getFloorLine(), type));
+        }
+    }
+    
+    private void addCenterPoolActions(AzulGameState state, List<AbstractAction> actions, int currentPlayer) {
+        List<AzulTile> centerPool = state.getCenterPool();
+        Set<AzulTile.TileType> availableTypes = new HashSet<>();
+
+        // Collect available tile types from centre
+        for (AzulTile tile : centerPool) {
+            if (tile != null && tile.getTileType() != null) {
+                availableTypes.add(tile.getTileType());
+            }
+        }
+
+        // Create actions for each type and valid pattern line
+        for (AzulTile.TileType type : availableTypes) {
+            // Add actions for pattern lines
+            Wall playerWall = state.getPlayerWall(currentPlayer);
+            
+            for (int line = 0; line < state.getPatternLines(currentPlayer).length; line++) {
+                PatternLine patternLine = state.getPatternLines(currentPlayer)[line];
+                
+                // Check if the pattern line can accept this tile type
+                if (patternLine.canAdd(new AzulTile(type))) {
+                    // Check if the corresponding wall spot is already filled
+                    int col = playerWall.getColumnForColor(line, type);
+                    if (col != -1 && !playerWall.isTilePlaced(line, col)) {
+                        actions.add(new TakeTilesAction(currentPlayer, -1, line, type));
+                    }
+                }
+            }
+            
+            // Add action for floor line (always an option)
+            actions.add(new TakeTilesAction(currentPlayer, -1, TakeTilesAction.getFloorLine(), type));
+        }
     }
 }

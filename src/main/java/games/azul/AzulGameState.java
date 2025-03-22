@@ -27,17 +27,19 @@ public class AzulGameState extends AbstractGameState {
     private List<AzulTile> centerPool;  // Center of table
     private Deck<AzulTile> tileBag;  // Main bag of tiles
     private Deck<AzulTile> discardBag;  // Discard pile
-    private int firstPlayerToken;  // Player with first player marker
+    private int firstPlayer;  // Player who has the first player token
 
     public AzulGameState(AbstractParameters params, int nPlayers) {
         super(params, nPlayers);
         gamePhase = GamePhase.TILE_PICKING;  // Initialize game phase
+        firstPlayer = 0;  // First player starts with the token
     }
 
     // Constructor specifically for AzulGameParameters
     public AzulGameState(AzulGameParameters params, int nPlayers) {
         super(params, nPlayers);
         gamePhase = GamePhase.TILE_PICKING;  // Initialize game phase
+        firstPlayer = 0;  // First player starts with the token
     }
 
     /**
@@ -48,7 +50,7 @@ public class AzulGameState extends AbstractGameState {
         System.out.println("\n========== AZUL GAME STATE DEBUG INFO ==========");
         System.out.println("Game Phase: " + gamePhase);
         System.out.println("Current Player: " + getCurrentPlayer());
-        System.out.println("First Player Token: Player " + firstPlayerToken);
+        System.out.println("First Player: " + firstPlayer);
         System.out.println("Round: " + getRoundCounter() + ", Turn: " + getTurnCounter());
         
         // Print player stats
@@ -157,8 +159,8 @@ public class AzulGameState extends AbstractGameState {
     public void setTileBag(Deck<AzulTile> tileBag) { this.tileBag = tileBag; }
     public Deck<AzulTile> getDiscardBag() { return discardBag; }
     public void setDiscardBag(Deck<AzulTile> discardBag) { this.discardBag = discardBag; }
-    public int getFirstPlayer() { return firstPlayerToken; }
-    public void setFirstPlayer(int player) { firstPlayerToken = player; }
+    public int getFirstPlayer() { return firstPlayer; }
+    public void setFirstPlayer(int player) { firstPlayer = player; }
 
     @Override
     protected GameType _getGameType() {
@@ -225,7 +227,7 @@ public class AzulGameState extends AbstractGameState {
             copy.tileBag = tileBag.copy();
         }
         copy.discardBag = discardBag.copy();
-        copy.firstPlayerToken = firstPlayerToken;
+        copy.firstPlayer = firstPlayer;
 
         return copy;
     }
@@ -261,14 +263,14 @@ public class AzulGameState extends AbstractGameState {
                 centerPool.equals(other.centerPool) &&
                 tileBag.equals(other.tileBag) &&
                 discardBag.equals(other.discardBag) &&
-                firstPlayerToken == other.firstPlayerToken;
+                firstPlayer == other.firstPlayer;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + Objects.hash(playerWalls, patternLines, floorLines, scores,
-                factories, centerPool, tileBag, discardBag, firstPlayerToken);
+                factories, centerPool, tileBag, discardBag, firstPlayer);
         return result;
     }
 
