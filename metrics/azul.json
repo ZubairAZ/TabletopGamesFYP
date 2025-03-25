@@ -1,56 +1,25 @@
 {
-    "game": "Azul",
-    "metrics": [
-        {
-            "name": "score",
-            "type": "int",
-            "description": "Final score of the player"
-        },
-        {
-            "name": "completed_rows",
-            "type": "int",
-            "description": "Number of completed rows on the wall"
-        },
-        {
-            "name": "completed_columns",
-            "type": "int",
-            "description": "Number of completed columns on the wall"
-        },
-        {
-            "name": "completed_color_sets",
-            "type": "int",
-            "description": "Number of completed color sets"
-        },
-        {
-            "name": "floor_penalty",
-            "type": "int",
-            "description": "Total penalty points from floor line"
-        },
-        {
-            "name": "tiles_placed",
-            "type": "int",
-            "description": "Total number of tiles placed on the wall"
-        },
-        {
-            "name": "rounds_played",
-            "type": "int",
-            "description": "Number of rounds played in the game"
-        }
+  "class": "evaluation.listeners.MetricsGameListener",
+  "args": [
+    {"enum": "evaluation.metrics.IDataLogger$ReportDestination", "value": "ToFile"},
+    [
+      {"enum": "evaluation.metrics.IDataLogger$ReportType", "value": "RawDataPerEvent"},
+      {"enum": "evaluation.metrics.IDataLogger$ReportType", "value": "Summary"}
     ],
-    "class": "evaluation.listeners.MetricsGameListener",
-    "args": [
-        [
-            {"class": "evaluation.metrics.GameMetrics$GameScore" },
-            {"class": "evaluation.metrics.GameMetrics$FinalScore" },
-            {"class": "evaluation.metrics.GameMetrics$StateSpace" },
-            {"class": "evaluation.metrics.GameMetrics$ComputationTimes" },
-            {"class": "evaluation.metrics.GameMetrics$Decisions" },
-            {"class": "evaluation.metrics.GameMetrics$Actions" },
-            {"class": "evaluation.metrics.GameMetrics$OrdinalPosition" },
-            {"class": "evaluation.metrics.GameMetrics$Winner" },
-            {"class": "games.azul.metrics.AzulMetrics$WallCompletion" },
-            {"class": "games.azul.metrics.AzulMetrics$FloorPenalty" },
-            {"class": "games.azul.metrics.AzulMetrics$TilesPlaced" }
-        ]
+    [
+      {"class": "evaluation.metrics.GameMetrics$GameScore"},
+      {"class": "evaluation.metrics.GameMetrics$FinalScore"},
+      {"class": "evaluation.metrics.GameMetrics$OrdinalPosition"},
+      {"class": "evaluation.metrics.GameMetrics$Decisions"},
+      {"class": "evaluation.metrics.GameMetrics$Winner"},
+      {"class": "evaluation.metrics.GameMetrics$Actions"},
+      {"class": "evaluation.metrics.GameMetrics$StateSpace"},
+      {"class": "evaluation.metrics.GameMetrics$ComputationTimes"},
+      {"class": "games.azul.metrics.AzulMetrics$CompletedRows"},
+      {"class": "games.azul.metrics.AzulMetrics$CompletedColumns"},
+      {"class": "games.azul.metrics.AzulMetrics$CompletedColorSets"},
+      {"class": "games.azul.metrics.AzulMetrics$FloorPenalties"},
+      {"class": "games.azul.metrics.AzulMetrics$WallTileCount"}
     ]
+  ]
 } 

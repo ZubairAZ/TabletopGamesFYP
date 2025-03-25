@@ -1,0 +1,905 @@
+Game: Azul, Players: 2, Mode: RANDOM, TotalGames: 50, GamesPerMatchup: 50
+Alpha calculations using Delta Ordinal
+Alpha calculations using Win Rate
+RuleBased got 12.00 points. RuleBased won 24.0% of the 50 games of the tournament. RuleBased won 70.6% of the 17 games it played during the tournament.
+RuleBased won 100.0% of the 5 games against Random.
+RuleBased won 80.0% of the 5 games against OSLA.
+RuleBased won NaN% of the 0 games against MCTS-Simple.
+RuleBased won 0.0% of the 4 games against MCTS-Advanced.
+RuleBased won 100.0% of the 3 games against RMHC.
+
+Random got 1.00 points. Random won 2.0% of the 50 games of the tournament. Random won 5.9% of the 17 games it played during the tournament.
+Random won 0.0% of the 5 games against RuleBased.
+Random won 20.0% of the 5 games against OSLA.
+Random won 0.0% of the 2 games against MCTS-Simple.
+Random won 0.0% of the 2 games against MCTS-Advanced.
+Random won 0.0% of the 3 games against RMHC.
+
+OSLA got 5.00 points. OSLA won 10.0% of the 50 games of the tournament. OSLA won 29.4% of the 17 games it played during the tournament.
+OSLA won 20.0% of the 5 games against RuleBased.
+OSLA won 80.0% of the 5 games against Random.
+OSLA won 0.0% of the 4 games against MCTS-Simple.
+OSLA won 0.0% of the 2 games against MCTS-Advanced.
+OSLA won 0.0% of the 1 games against RMHC.
+
+MCTS-Simple got 16.00 points. MCTS-Simple won 32.0% of the 50 games of the tournament. MCTS-Simple won 100.0% of the 16 games it played during the tournament.
+MCTS-Simple won NaN% of the 0 games against RuleBased.
+MCTS-Simple won 100.0% of the 2 games against Random.
+MCTS-Simple won 100.0% of the 4 games against OSLA.
+MCTS-Simple won 100.0% of the 4 games against MCTS-Advanced.
+MCTS-Simple won 100.0% of the 6 games against RMHC.
+
+MCTS-Advanced got 11.00 points. MCTS-Advanced won 22.0% of the 50 games of the tournament. MCTS-Advanced won 68.8% of the 16 games it played during the tournament.
+MCTS-Advanced won 100.0% of the 4 games against RuleBased.
+MCTS-Advanced won 100.0% of the 2 games against Random.
+MCTS-Advanced won 100.0% of the 2 games against OSLA.
+MCTS-Advanced won 0.0% of the 4 games against MCTS-Simple.
+MCTS-Advanced won 75.0% of the 4 games against RMHC.
+
+RMHC got 5.00 points. RMHC won 10.0% of the 50 games of the tournament. RMHC won 29.4% of the 17 games it played during the tournament.
+RMHC won 0.0% of the 3 games against RuleBased.
+RMHC won 100.0% of the 3 games against Random.
+RMHC won 100.0% of the 1 games against OSLA.
+RMHC won 0.0% of the 6 games against MCTS-Simple.
+RMHC won 25.0% of the 4 games against MCTS-Advanced.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+RuleBased: Win rate 0.71 +/- 0.111	Mean Ordinal 1.29 +/- 0.11
+MCTS-Advanced: Win rate 0.69 +/- 0.116	Mean Ordinal 1.31 +/- 0.12
+OSLA: Win rate 0.29 +/- 0.111	Mean Ordinal 1.71 +/- 0.11
+RMHC: Win rate 0.29 +/- 0.111	Mean Ordinal 1.71 +/- 0.11
+Random: Win rate 0.06 +/- 0.057	Mean Ordinal 1.94 +/- 0.06
+
+Alpha-rank by Win Rate
+	RuleBased                     	0.00
+	Random                        	0.00
+	OSLA                          	0.00
+	MCTS-Simple                   	0.00
+	MCTS-Advanced                 	0.00
+	RMHC                          	0.00
+
+Alpha-rank by Ordinal Position
+	RuleBased                     	0.00
+	Random                        	0.00
+	OSLA                          	0.00
+	MCTS-Simple                   	0.00
+	MCTS-Advanced                 	0.00
+	RMHC                          	0.00
+
+Game: Azul, Players: 2, Mode: RANDOM, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: RANDOM, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 43.00 points. RuleBased won 86.0% of the 50 games of the tournament. RuleBased won 86.0% of the 50 games it played during the tournament.
+RuleBased won 86.0% of the 50 games against OSLA.
+
+OSLA got 7.00 points. OSLA won 14.0% of the 50 games of the tournament. OSLA won 14.0% of the 50 games it played during the tournament.
+OSLA won 14.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.86 +/- 0.049	Mean Ordinal 1.14 +/- 0.05
+OSLA: Win rate 0.14 +/- 0.049	Mean Ordinal 1.86 +/- 0.05
+
+Game: Azul, Players: 2, Mode: RANDOM, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 6.50 points. RuleBased won 12.0% of the 50 games of the tournament. RuleBased won 12.0% of the 50 games it played during the tournament.
+RuleBased won 12.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 43.50 points. MCTS-Simple won 86.0% of the 50 games of the tournament. MCTS-Simple won 86.0% of the 50 games it played during the tournament.
+MCTS-Simple won 86.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.87 +/- 0.046	Mean Ordinal 1.12 +/- 0.05
+RuleBased: Win rate 0.13 +/- 0.046	Mean Ordinal 1.86 +/- 0.05
+
+Game: Azul, Players: 2, Mode: RANDOM, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 7.50 points. RuleBased won 14.0% of the 50 games of the tournament. RuleBased won 14.0% of the 50 games it played during the tournament.
+RuleBased won 14.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 42.50 points. MCTS-Advanced won 84.0% of the 50 games of the tournament. MCTS-Advanced won 84.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 84.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.85 +/- 0.049	Mean Ordinal 1.14 +/- 0.05
+RuleBased: Win rate 0.15 +/- 0.049	Mean Ordinal 1.84 +/- 0.05
+
+Game: Azul, Players: 2, Mode: RANDOM, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 42.00 points. RuleBased won 84.0% of the 50 games of the tournament. RuleBased won 84.0% of the 50 games it played during the tournament.
+RuleBased won 84.0% of the 50 games against RMHC.
+
+RMHC got 8.00 points. RMHC won 16.0% of the 50 games of the tournament. RMHC won 16.0% of the 50 games it played during the tournament.
+RMHC won 16.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.84 +/- 0.052	Mean Ordinal 1.16 +/- 0.05
+RMHC: Win rate 0.16 +/- 0.052	Mean Ordinal 1.84 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 43.50 points. RuleBased won 86.0% of the 50 games of the tournament. RuleBased won 86.0% of the 50 games it played during the tournament.
+RuleBased won 86.0% of the 50 games against OSLA.
+
+OSLA got 6.50 points. OSLA won 12.0% of the 50 games of the tournament. OSLA won 12.0% of the 50 games it played during the tournament.
+OSLA won 12.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.87 +/- 0.046	Mean Ordinal 1.12 +/- 0.05
+OSLA: Win rate 0.13 +/- 0.046	Mean Ordinal 1.86 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 9.00 points. RuleBased won 12.0% of the 50 games of the tournament. RuleBased won 12.0% of the 50 games it played during the tournament.
+RuleBased won 12.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 41.00 points. MCTS-Simple won 76.0% of the 50 games of the tournament. MCTS-Simple won 76.0% of the 50 games it played during the tournament.
+MCTS-Simple won 76.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.82 +/- 0.048	Mean Ordinal 1.12 +/- 0.05
+RuleBased: Win rate 0.18 +/- 0.048	Mean Ordinal 1.76 +/- 0.06
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 6.50 points. RuleBased won 10.0% of the 50 games of the tournament. RuleBased won 10.0% of the 50 games it played during the tournament.
+RuleBased won 10.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 43.50 points. MCTS-Advanced won 84.0% of the 50 games of the tournament. MCTS-Advanced won 84.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 84.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.87 +/- 0.044	Mean Ordinal 1.10 +/- 0.04
+RuleBased: Win rate 0.13 +/- 0.044	Mean Ordinal 1.84 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 41.50 points. RuleBased won 82.0% of the 50 games of the tournament. RuleBased won 82.0% of the 50 games it played during the tournament.
+RuleBased won 82.0% of the 50 games against RMHC.
+
+RMHC got 8.50 points. RMHC won 16.0% of the 50 games of the tournament. RMHC won 16.0% of the 50 games it played during the tournament.
+RMHC won 16.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.83 +/- 0.052	Mean Ordinal 1.16 +/- 0.05
+RMHC: Win rate 0.17 +/- 0.052	Mean Ordinal 1.82 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 44.50 points. RuleBased won 88.0% of the 50 games of the tournament. RuleBased won 88.0% of the 50 games it played during the tournament.
+RuleBased won 88.0% of the 50 games against OSLA.
+
+OSLA got 5.50 points. OSLA won 10.0% of the 50 games of the tournament. OSLA won 10.0% of the 50 games it played during the tournament.
+OSLA won 10.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.89 +/- 0.043	Mean Ordinal 1.10 +/- 0.04
+OSLA: Win rate 0.11 +/- 0.043	Mean Ordinal 1.88 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 16.00 points. RuleBased won 6.0% of the 50 games of the tournament. RuleBased won 6.0% of the 50 games it played during the tournament.
+RuleBased won 6.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 34.00 points. MCTS-Simple won 42.0% of the 50 games of the tournament. MCTS-Simple won 42.0% of the 50 games it played during the tournament.
+MCTS-Simple won 42.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.68 +/- 0.042	Mean Ordinal 1.06 +/- 0.03
+RuleBased: Win rate 0.32 +/- 0.042	Mean Ordinal 1.42 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 13.50 points. RuleBased won 10.0% of the 50 games of the tournament. RuleBased won 10.0% of the 50 games it played during the tournament.
+RuleBased won 10.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 36.50 points. MCTS-Advanced won 56.0% of the 50 games of the tournament. MCTS-Advanced won 56.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 56.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.73 +/- 0.047	Mean Ordinal 1.10 +/- 0.04
+RuleBased: Win rate 0.27 +/- 0.047	Mean Ordinal 1.56 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 43.00 points. RuleBased won 84.0% of the 50 games of the tournament. RuleBased won 84.0% of the 50 games it played during the tournament.
+RuleBased won 84.0% of the 50 games against RMHC.
+
+RMHC got 7.00 points. RMHC won 12.0% of the 50 games of the tournament. RMHC won 12.0% of the 50 games it played during the tournament.
+RMHC won 12.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.86 +/- 0.047	Mean Ordinal 1.12 +/- 0.05
+RMHC: Win rate 0.14 +/- 0.047	Mean Ordinal 1.84 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 45.00 points. RuleBased won 90.0% of the 50 games of the tournament. RuleBased won 90.0% of the 50 games it played during the tournament.
+RuleBased won 90.0% of the 50 games against OSLA.
+
+OSLA got 5.00 points. OSLA won 10.0% of the 50 games of the tournament. OSLA won 10.0% of the 50 games it played during the tournament.
+OSLA won 10.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.90 +/- 0.042	Mean Ordinal 1.10 +/- 0.04
+OSLA: Win rate 0.10 +/- 0.042	Mean Ordinal 1.90 +/- 0.04
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 8.00 points. RuleBased won 16.0% of the 50 games of the tournament. RuleBased won 16.0% of the 50 games it played during the tournament.
+RuleBased won 16.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 42.00 points. MCTS-Simple won 84.0% of the 50 games of the tournament. MCTS-Simple won 84.0% of the 50 games it played during the tournament.
+MCTS-Simple won 84.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.84 +/- 0.052	Mean Ordinal 1.16 +/- 0.05
+RuleBased: Win rate 0.16 +/- 0.052	Mean Ordinal 1.84 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 9.50 points. RuleBased won 18.0% of the 50 games of the tournament. RuleBased won 18.0% of the 50 games it played during the tournament.
+RuleBased won 18.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 40.50 points. MCTS-Advanced won 80.0% of the 50 games of the tournament. MCTS-Advanced won 80.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 80.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.81 +/- 0.055	Mean Ordinal 1.18 +/- 0.05
+RuleBased: Win rate 0.19 +/- 0.055	Mean Ordinal 1.80 +/- 0.06
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 41.50 points. RuleBased won 82.0% of the 50 games of the tournament. RuleBased won 82.0% of the 50 games it played during the tournament.
+RuleBased won 82.0% of the 50 games against RMHC.
+
+RMHC got 8.50 points. RMHC won 16.0% of the 50 games of the tournament. RMHC won 16.0% of the 50 games it played during the tournament.
+RMHC won 16.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.83 +/- 0.052	Mean Ordinal 1.16 +/- 0.05
+RMHC: Win rate 0.17 +/- 0.052	Mean Ordinal 1.82 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.00 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against OSLA.
+
+OSLA got 1.00 points. OSLA won 2.0% of the 50 games of the tournament. OSLA won 2.0% of the 50 games it played during the tournament.
+OSLA won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.98 +/- 0.020	Mean Ordinal 1.02 +/- 0.02
+OSLA: Win rate 0.02 +/- 0.020	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 20.50 points. RuleBased won 40.0% of the 50 games of the tournament. RuleBased won 40.0% of the 50 games it played during the tournament.
+RuleBased won 40.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 29.50 points. MCTS-Simple won 58.0% of the 50 games of the tournament. MCTS-Simple won 58.0% of the 50 games it played during the tournament.
+MCTS-Simple won 58.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.59 +/- 0.069	Mean Ordinal 1.40 +/- 0.07
+RuleBased: Win rate 0.41 +/- 0.069	Mean Ordinal 1.58 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 22.00 points. RuleBased won 42.0% of the 50 games of the tournament. RuleBased won 42.0% of the 50 games it played during the tournament.
+RuleBased won 42.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 28.00 points. MCTS-Advanced won 54.0% of the 50 games of the tournament. MCTS-Advanced won 54.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 54.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.56 +/- 0.069	Mean Ordinal 1.42 +/- 0.07
+RuleBased: Win rate 0.44 +/- 0.069	Mean Ordinal 1.54 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against RMHC.
+
+RMHC got 0.00 points. RMHC won 0.0% of the 50 games of the tournament. RMHC won 0.0% of the 50 games it played during the tournament.
+RMHC won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+RMHC: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 48.50 points. RuleBased won 96.0% of the 50 games of the tournament. RuleBased won 96.0% of the 50 games it played during the tournament.
+RuleBased won 96.0% of the 50 games against Random.
+
+Random got 1.50 points. Random won 2.0% of the 50 games of the tournament. Random won 2.0% of the 50 games it played during the tournament.
+Random won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.97 +/- 0.022	Mean Ordinal 1.02 +/- 0.02
+Random: Win rate 0.03 +/- 0.022	Mean Ordinal 1.96 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 40.50 points. RuleBased won 80.0% of the 50 games of the tournament. RuleBased won 80.0% of the 50 games it played during the tournament.
+RuleBased won 80.0% of the 50 games against OSLA.
+
+OSLA got 9.50 points. OSLA won 18.0% of the 50 games of the tournament. OSLA won 18.0% of the 50 games it played during the tournament.
+OSLA won 18.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.81 +/- 0.055	Mean Ordinal 1.18 +/- 0.05
+OSLA: Win rate 0.19 +/- 0.055	Mean Ordinal 1.80 +/- 0.06
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 19.50 points. RuleBased won 36.0% of the 50 games of the tournament. RuleBased won 36.0% of the 50 games it played during the tournament.
+RuleBased won 36.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 30.50 points. MCTS-Simple won 58.0% of the 50 games of the tournament. MCTS-Simple won 58.0% of the 50 games it played during the tournament.
+MCTS-Simple won 58.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.61 +/- 0.067	Mean Ordinal 1.36 +/- 0.07
+RuleBased: Win rate 0.39 +/- 0.067	Mean Ordinal 1.58 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 15.00 points. RuleBased won 28.0% of the 50 games of the tournament. RuleBased won 28.0% of the 50 games it played during the tournament.
+RuleBased won 28.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 35.00 points. MCTS-Advanced won 68.0% of the 50 games of the tournament. MCTS-Advanced won 68.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 68.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.70 +/- 0.063	Mean Ordinal 1.28 +/- 0.06
+RuleBased: Win rate 0.30 +/- 0.063	Mean Ordinal 1.68 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 42.00 points. RuleBased won 84.0% of the 50 games of the tournament. RuleBased won 84.0% of the 50 games it played during the tournament.
+RuleBased won 84.0% of the 50 games against RMHC.
+
+RMHC got 8.00 points. RMHC won 16.0% of the 50 games of the tournament. RMHC won 16.0% of the 50 games it played during the tournament.
+RMHC won 16.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.84 +/- 0.052	Mean Ordinal 1.16 +/- 0.05
+RMHC: Win rate 0.16 +/- 0.052	Mean Ordinal 1.84 +/- 0.05
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 22.00 points. RuleBased won 44.0% of the 50 games of the tournament. RuleBased won 44.0% of the 50 games it played during the tournament.
+RuleBased won 44.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 28.00 points. MCTS-Simple won 56.0% of the 50 games of the tournament. MCTS-Simple won 56.0% of the 50 games it played during the tournament.
+MCTS-Simple won 56.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.56 +/- 0.070	Mean Ordinal 1.44 +/- 0.07
+RuleBased: Win rate 0.44 +/- 0.070	Mean Ordinal 1.56 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 16.50 points. RuleBased won 32.0% of the 50 games of the tournament. RuleBased won 32.0% of the 50 games it played during the tournament.
+RuleBased won 32.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 33.50 points. MCTS-Advanced won 66.0% of the 50 games of the tournament. MCTS-Advanced won 66.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 66.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.67 +/- 0.066	Mean Ordinal 1.32 +/- 0.07
+RuleBased: Win rate 0.33 +/- 0.066	Mean Ordinal 1.66 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 24.00 points. RuleBased won 46.0% of the 50 games of the tournament. RuleBased won 46.0% of the 50 games it played during the tournament.
+RuleBased won 46.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 26.00 points. MCTS-Simple won 50.0% of the 50 games of the tournament. MCTS-Simple won 50.0% of the 50 games it played during the tournament.
+MCTS-Simple won 50.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.52 +/- 0.069	Mean Ordinal 1.46 +/- 0.07
+RuleBased: Win rate 0.48 +/- 0.069	Mean Ordinal 1.50 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 21.50 points. RuleBased won 42.0% of the 50 games of the tournament. RuleBased won 42.0% of the 50 games it played during the tournament.
+RuleBased won 42.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 28.50 points. MCTS-Advanced won 56.0% of the 50 games of the tournament. MCTS-Advanced won 56.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 56.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.57 +/- 0.069	Mean Ordinal 1.42 +/- 0.07
+RuleBased: Win rate 0.43 +/- 0.069	Mean Ordinal 1.56 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 24.50 points. RuleBased won 48.0% of the 50 games of the tournament. RuleBased won 48.0% of the 50 games it played during the tournament.
+RuleBased won 48.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 25.50 points. MCTS-Simple won 50.0% of the 50 games of the tournament. MCTS-Simple won 50.0% of the 50 games it played during the tournament.
+MCTS-Simple won 50.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Simple: Win rate 0.51 +/- 0.070	Mean Ordinal 1.48 +/- 0.07
+RuleBased: Win rate 0.49 +/- 0.070	Mean Ordinal 1.50 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 19.50 points. RuleBased won 38.0% of the 50 games of the tournament. RuleBased won 38.0% of the 50 games it played during the tournament.
+RuleBased won 38.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 30.50 points. MCTS-Advanced won 60.0% of the 50 games of the tournament. MCTS-Advanced won 60.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 60.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.61 +/- 0.068	Mean Ordinal 1.38 +/- 0.07
+RuleBased: Win rate 0.39 +/- 0.068	Mean Ordinal 1.60 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 28.50 points. RuleBased won 54.0% of the 50 games of the tournament. RuleBased won 54.0% of the 50 games it played during the tournament.
+RuleBased won 54.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 21.50 points. MCTS-Simple won 40.0% of the 50 games of the tournament. MCTS-Simple won 40.0% of the 50 games it played during the tournament.
+MCTS-Simple won 40.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.57 +/- 0.068	Mean Ordinal 1.40 +/- 0.07
+MCTS-Simple: Win rate 0.43 +/- 0.068	Mean Ordinal 1.54 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 19.00 points. RuleBased won 38.0% of the 50 games of the tournament. RuleBased won 38.0% of the 50 games it played during the tournament.
+RuleBased won 38.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 31.00 points. MCTS-Advanced won 62.0% of the 50 games of the tournament. MCTS-Advanced won 62.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 62.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+MCTS-Advanced: Win rate 0.62 +/- 0.069	Mean Ordinal 1.38 +/- 0.07
+RuleBased: Win rate 0.38 +/- 0.069	Mean Ordinal 1.62 +/- 0.07
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.00 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 1.00 points. MCTS-Simple won 2.0% of the 50 games of the tournament. MCTS-Simple won 2.0% of the 50 games it played during the tournament.
+MCTS-Simple won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.98 +/- 0.020	Mean Ordinal 1.02 +/- 0.02
+MCTS-Simple: Win rate 0.02 +/- 0.020	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.00 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 1.00 points. MCTS-Advanced won 2.0% of the 50 games of the tournament. MCTS-Advanced won 2.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.98 +/- 0.020	Mean Ordinal 1.02 +/- 0.02
+MCTS-Advanced: Win rate 0.02 +/- 0.020	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.50 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against OSLA.
+
+OSLA got 0.50 points. OSLA won 0.0% of the 50 games of the tournament. OSLA won 0.0% of the 50 games it played during the tournament.
+OSLA won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.99 +/- 0.010	Mean Ordinal 1.00 +/- 0.00
+OSLA: Win rate 0.01 +/- 0.010	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.00 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 1.00 points. MCTS-Simple won 2.0% of the 50 games of the tournament. MCTS-Simple won 2.0% of the 50 games it played during the tournament.
+MCTS-Simple won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.98 +/- 0.020	Mean Ordinal 1.02 +/- 0.02
+MCTS-Simple: Win rate 0.02 +/- 0.020	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 0.00 points. MCTS-Advanced won 0.0% of the 50 games of the tournament. MCTS-Advanced won 0.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+MCTS-Advanced: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 48.00 points. RuleBased won 96.0% of the 50 games of the tournament. RuleBased won 96.0% of the 50 games it played during the tournament.
+RuleBased won 96.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 2.00 points. MCTS-Simple won 4.0% of the 50 games of the tournament. MCTS-Simple won 4.0% of the 50 games it played during the tournament.
+MCTS-Simple won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.96 +/- 0.028	Mean Ordinal 1.04 +/- 0.03
+MCTS-Simple: Win rate 0.04 +/- 0.028	Mean Ordinal 1.96 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.00 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 3.00 points. MCTS-Advanced won 6.0% of the 50 games of the tournament. MCTS-Advanced won 6.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 6.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.94 +/- 0.034	Mean Ordinal 1.06 +/- 0.03
+MCTS-Advanced: Win rate 0.06 +/- 0.034	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 0.00 points. MCTS-Simple won 0.0% of the 50 games of the tournament. MCTS-Simple won 0.0% of the 50 games it played during the tournament.
+MCTS-Simple won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+MCTS-Simple: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 2.50 points. MCTS-Advanced won 4.0% of the 50 games of the tournament. MCTS-Advanced won 4.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+MCTS-Advanced: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 46.00 points. RuleBased won 92.0% of the 50 games of the tournament. RuleBased won 92.0% of the 50 games it played during the tournament.
+RuleBased won 92.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 4.00 points. MCTS-Simple won 8.0% of the 50 games of the tournament. MCTS-Simple won 8.0% of the 50 games it played during the tournament.
+MCTS-Simple won 8.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.92 +/- 0.038	Mean Ordinal 1.08 +/- 0.04
+MCTS-Simple: Win rate 0.08 +/- 0.038	Mean Ordinal 1.92 +/- 0.04
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 0.00 points. MCTS-Advanced won 0.0% of the 50 games of the tournament. MCTS-Advanced won 0.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+MCTS-Advanced: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.00 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 1.00 points. MCTS-Simple won 2.0% of the 50 games of the tournament. MCTS-Simple won 2.0% of the 50 games it played during the tournament.
+MCTS-Simple won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.98 +/- 0.020	Mean Ordinal 1.02 +/- 0.02
+MCTS-Simple: Win rate 0.02 +/- 0.020	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 2.50 points. MCTS-Advanced won 4.0% of the 50 games of the tournament. MCTS-Advanced won 4.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+MCTS-Advanced: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 50.00 points. RuleBased won 100.0% of the 50 games of the tournament. RuleBased won 100.0% of the 50 games it played during the tournament.
+RuleBased won 100.0% of the 50 games against Random.
+
+Random got 0.00 points. Random won 0.0% of the 50 games of the tournament. Random won 0.0% of the 50 games it played during the tournament.
+Random won 0.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 1.00 +/- 0.000	Mean Ordinal 1.00 +/- 0.00
+Random: Win rate 0.00 +/- 0.000	Mean Ordinal 2.00 +/- 0.00
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 47.50 points. RuleBased won 94.0% of the 50 games of the tournament. RuleBased won 94.0% of the 50 games it played during the tournament.
+RuleBased won 94.0% of the 50 games against OSLA.
+
+OSLA got 2.50 points. OSLA won 4.0% of the 50 games of the tournament. OSLA won 4.0% of the 50 games it played during the tournament.
+OSLA won 4.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.95 +/- 0.029	Mean Ordinal 1.04 +/- 0.03
+OSLA: Win rate 0.05 +/- 0.029	Mean Ordinal 1.94 +/- 0.03
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 49.00 points. RuleBased won 98.0% of the 50 games of the tournament. RuleBased won 98.0% of the 50 games it played during the tournament.
+RuleBased won 98.0% of the 50 games against MCTS-Simple.
+
+MCTS-Simple got 1.00 points. MCTS-Simple won 2.0% of the 50 games of the tournament. MCTS-Simple won 2.0% of the 50 games it played during the tournament.
+MCTS-Simple won 2.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.98 +/- 0.020	Mean Ordinal 1.02 +/- 0.02
+MCTS-Simple: Win rate 0.02 +/- 0.020	Mean Ordinal 1.98 +/- 0.02
+
+Game: Azul, Players: 2, Mode: FIXED, TotalGames: 50, GamesPerMatchup: 50
+RuleBased got 45.50 points. RuleBased won 90.0% of the 50 games of the tournament. RuleBased won 90.0% of the 50 games it played during the tournament.
+RuleBased won 90.0% of the 50 games against MCTS-Advanced.
+
+MCTS-Advanced got 4.50 points. MCTS-Advanced won 8.0% of the 50 games of the tournament. MCTS-Advanced won 8.0% of the 50 games it played during the tournament.
+MCTS-Advanced won 8.0% of the 50 games against RuleBased.
+
+---- Ranking ---- (+/- are standard errors on the mean calculated using a Normal approximation) 
+RuleBased: Win rate 0.91 +/- 0.039	Mean Ordinal 1.08 +/- 0.04
+MCTS-Advanced: Win rate 0.09 +/- 0.039	Mean Ordinal 1.90 +/- 0.04
+

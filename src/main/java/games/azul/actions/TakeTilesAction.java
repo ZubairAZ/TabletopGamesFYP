@@ -51,25 +51,8 @@ public class TakeTilesAction extends AbstractAction {
         }
 
         if (factoryId == -1) {
-            // Check if first player token is in centre before we start
-            boolean hasFirstPlayerToken = state.isFirstPlayerTokenInCenter();
-            
             // Take from centre pool
             moveTilesFromCenter(state);
-            
-            // If the first player token was in the centre, take it
-            if (hasFirstPlayerToken) {
-                // Remove first player token from centre and add to floor line
-                state.removeFirstPlayerTokenFromCenter();
-                state.getFloorLine(playerId).increment();
-                state.setFirstPlayer(playerId);
-                
-                if (DEBUG_MODE) {
-                    System.out.println("Player " + playerId + " took the first player token");
-                    System.out.println("First player for next round set to: " + playerId);
-                    System.out.println("Floor line count after adding token: " + state.getFloorLine(playerId).getValue());
-                }
-            }
         } else {
             // Take from factory
             moveTilesFromFactory(state);
@@ -159,31 +142,41 @@ public class TakeTilesAction extends AbstractAction {
         List<AzulTile> centerPool = state.getCenterPool();
         List<AzulTile> tilesToMove = new ArrayList<>();
         
-        // Check if this is the first tile being taken from center in this round
-        boolean isFirstCenterAction = centerPool.size() > 0 && !state.isFirstPlayerTokenInCenter();
-        
-        // Collect matching tiles
-        for (AzulTile tile : centerPool) {
-            if (tile.getTileType() == tileType) {
-                tilesToMove.add(tile);
+        // Check if this is the first take from center in this round
+        if (state.isFirstPlayerTokenInCenter()) {
+            state.removeFirstPlayerTokenFromCenter();
+            state.getFloorLine(playerId).increment();
+            state.setFirstPlayer(playerId);
+            
+            if (DEBUG_MODE) {
+                System.out.println("Player " + playerId + " takes first player token");
             }
         }
         
-        // Remove matching tiles from center pool
-        centerPool.removeAll(tilesToMove);
+        // Collect matching tiles
+        Iterator<AzulTile> iterator = centerPool.iterator();
+        while (iterator.hasNext()) {
+            AzulTile tile = iterator.next();
+            if (tile.getTileType() == tileType) {
+                tilesToMove.add(tile);
+                iterator.remove();
+            }
+        }
         
         // Move tiles to pattern line or floor line
         if (patternLineIdx >= 0) {
             // Move to pattern line
             PatternLine patternLine = state.getPatternLines(playerId)[patternLineIdx];
-            int maxTiles = patternLineIdx + 1;
-            for (int i = 0; i < tilesToMove.size(); i++) {
-                if (i < maxTiles) {
-                    patternLine.add(tilesToMove.get(i));
+            int availableSpace = patternLineIdx + 1 - patternLine.getCount();
+            
+            for (AzulTile tile : tilesToMove) {
+                if (availableSpace > 0) {
+                    patternLine.add(tile);
+                    availableSpace--;
                 } else {
                     // Move excess tiles to floor line
                     state.getFloorLine(playerId).increment();
-                    state.getDiscardBag().add(tilesToMove.get(i));
+                    state.getDiscardBag().add(tile);
                 }
             }
         } else {
@@ -191,15 +184,6 @@ public class TakeTilesAction extends AbstractAction {
             for (AzulTile tile : tilesToMove) {
                 state.getFloorLine(playerId).increment();
                 state.getDiscardBag().add(tile);
-            }
-        }
-        
-        // If this is the first tile taken from center in this round, give this player the first player token
-        if (isFirstCenterAction) {
-            state.setFirstPlayer(playerId);
-            state.getFloorLine(playerId).increment();
-            if (DEBUG_MODE) {
-                System.out.println("Player " + playerId + " took first tile from center - becomes first player for next round");
             }
         }
     }

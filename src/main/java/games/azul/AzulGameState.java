@@ -167,7 +167,6 @@ public class AzulGameState extends AbstractGameState {
         return GameType.Azul;
     }
 
-
     @Override
     protected List<Component> _getAllComponents() {
         List<Component> components = new ArrayList<>();
@@ -237,11 +236,15 @@ public class AzulGameState extends AbstractGameState {
         double score = scores.get(playerId).getValue();
 
         Wall wall = playerWalls.get(playerId);
-        score += wall.getCompletedRows() * ((AzulGameParameters)gameParameters).getBonusPoints();
-        score += wall.getCompletedColumns() * ((AzulGameParameters)gameParameters).getBonusPoints();
+        AzulGameParameters params = (AzulGameParameters) gameParameters;
+        
+        // Add bonus points for completed rows, columns, and color sets
+        score += wall.getCompletedRows() * params.getRowBonusPoints();
+        score += wall.getCompletedColumns() * params.getColumnBonusPoints();
+        score += wall.getCompletedColorSets() * params.getColorSetBonusPoints();
 
-        score += floorLines.get(playerId).getValue() *
-                ((AzulGameParameters)gameParameters).getPenaltyPerFloorTile();
+        // Apply floor line penalties
+        score += floorLines.get(playerId).getValue() * params.getPenaltyPerFloorTile();
 
         return score / 100.0;  // Normalize to [-1, 1] range
     }

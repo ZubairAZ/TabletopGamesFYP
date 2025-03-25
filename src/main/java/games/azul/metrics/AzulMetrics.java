@@ -1,114 +1,238 @@
 package games.azul.metrics;
 
-import core.AbstractGameState;
 import core.interfaces.IGameEvent;
 import evaluation.listeners.MetricsGameListener;
 import evaluation.metrics.AbstractMetric;
 import evaluation.metrics.Event;
 import games.azul.AzulGameState;
 import games.azul.components.Wall;
-import core.components.Counter;
 
 import java.util.*;
 
-import static evaluation.metrics.Event.GameEvent.GAME_OVER;
-
+/**
+ * Metrics specific to the Azul game implementation.
+ * Tracks various statistics about game play including:
+ * - Completed rows, columns, and color sets
+ * - Floor penalties incurred
+ * - Wall tile placement patterns
+ */
 public class AzulMetrics {
-    private static final int[] FLOOR_PENALTIES = {-1, -1, -2, -2, -2, -3, -3};
 
-    public static class WallCompletion extends AbstractMetric {
+    /**
+     * Tracks the number of completed rows on each player's wall
+     */
+    public static class CompletedRows extends AbstractMetric {
+        
+        public CompletedRows() {
+            super();
+        }
+        
+        public CompletedRows(Event.GameEvent... args) {
+            super(args);
+        }
+        
         @Override
-        protected boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
+        public boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
             AzulGameState state = (AzulGameState) e.state;
-            int completedRows = 0;
-            int completedColumns = 0;
-            int completedColorSets = 0;
             
-            for (int player = 0; player < state.getNPlayers(); player++) {
-                Wall wall = state.getPlayerWalls().get(player);
-                completedRows += wall.getCompletedRows();
-                completedColumns += wall.getCompletedColumns();
-                completedColorSets += wall.getCompletedColorSets();
+            for (int i = 0; i < state.getNPlayers(); i++) {
+                Wall playerWall = state.getPlayerWall(i);
+                records.put("Player-" + i, playerWall.getCompletedRows());
+                records.put("PlayerName-" + i, listener.getGame().getPlayers().get(i).toString());
             }
             
-            records.put("CompletedRows", completedRows);
-            records.put("CompletedColumns", completedColumns);
-            records.put("CompletedColorSets", completedColorSets);
             return true;
         }
-
+        
         @Override
         public Set<IGameEvent> getDefaultEventTypes() {
-            return Collections.singleton(GAME_OVER);
+            return Collections.singleton(Event.GameEvent.GAME_OVER);
         }
-
+        
         @Override
         public Map<String, Class<?>> getColumns(int nPlayersPerGame, Set<String> playerNames) {
             Map<String, Class<?>> columns = new HashMap<>();
-            columns.put("CompletedRows", Integer.class);
-            columns.put("CompletedColumns", Integer.class);
-            columns.put("CompletedColorSets", Integer.class);
+            for (int i = 0; i < nPlayersPerGame; i++) {
+                columns.put("Player-" + i, Integer.class);
+                columns.put("PlayerName-" + i, String.class);
+            }
             return columns;
         }
     }
-
-    public static class FloorPenalty extends AbstractMetric {
+    
+    /**
+     * Tracks the number of completed columns on each player's wall
+     */
+    public static class CompletedColumns extends AbstractMetric {
+        
+        public CompletedColumns() {
+            super();
+        }
+        
+        public CompletedColumns(Event.GameEvent... args) {
+            super(args);
+        }
+        
         @Override
-        protected boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
+        public boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
             AzulGameState state = (AzulGameState) e.state;
-            int totalPenalty = 0;
-            for (int player = 0; player < state.getNPlayers(); player++) {
-                Counter floorLine = state.getFloorLine(player);
-                int floorTiles = floorLine.getValue();
-                int penalty = 0;
-                for (int i = 0; i < floorTiles && i < FLOOR_PENALTIES.length; i++) {
-                    penalty += FLOOR_PENALTIES[i];
-                }
-                totalPenalty += penalty;
+            
+            for (int i = 0; i < state.getNPlayers(); i++) {
+                Wall playerWall = state.getPlayerWall(i);
+                records.put("Player-" + i, playerWall.getCompletedColumns());
+                records.put("PlayerName-" + i, listener.getGame().getPlayers().get(i).toString());
             }
-            records.put("TotalPenalty", totalPenalty);
+            
             return true;
         }
-
+        
         @Override
         public Set<IGameEvent> getDefaultEventTypes() {
-            return Collections.singleton(GAME_OVER);
+            return Collections.singleton(Event.GameEvent.GAME_OVER);
         }
-
+        
         @Override
         public Map<String, Class<?>> getColumns(int nPlayersPerGame, Set<String> playerNames) {
             Map<String, Class<?>> columns = new HashMap<>();
-            columns.put("TotalPenalty", Integer.class);
+            for (int i = 0; i < nPlayersPerGame; i++) {
+                columns.put("Player-" + i, Integer.class);
+                columns.put("PlayerName-" + i, String.class);
+            }
             return columns;
         }
     }
-
-    public static class TilesPlaced extends AbstractMetric {
+    
+    /**
+     * Tracks the number of completed color sets on each player's wall
+     */
+    public static class CompletedColorSets extends AbstractMetric {
+        
+        public CompletedColorSets() {
+            super();
+        }
+        
+        public CompletedColorSets(Event.GameEvent... args) {
+            super(args);
+        }
+        
         @Override
-        protected boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
+        public boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
             AzulGameState state = (AzulGameState) e.state;
-            int totalTiles = 0;
-            for (int player = 0; player < state.getNPlayers(); player++) {
-                Wall wall = state.getPlayerWalls().get(player);
+            
+            for (int i = 0; i < state.getNPlayers(); i++) {
+                Wall playerWall = state.getPlayerWall(i);
+                records.put("Player-" + i, playerWall.getCompletedColorSets());
+                records.put("PlayerName-" + i, listener.getGame().getPlayers().get(i).toString());
+            }
+            
+            return true;
+        }
+        
+        @Override
+        public Set<IGameEvent> getDefaultEventTypes() {
+            return Collections.singleton(Event.GameEvent.GAME_OVER);
+        }
+        
+        @Override
+        public Map<String, Class<?>> getColumns(int nPlayersPerGame, Set<String> playerNames) {
+            Map<String, Class<?>> columns = new HashMap<>();
+            for (int i = 0; i < nPlayersPerGame; i++) {
+                columns.put("Player-" + i, Integer.class);
+                columns.put("PlayerName-" + i, String.class);
+            }
+            return columns;
+        }
+    }
+    
+    /**
+     * Tracks the total floor penalties incurred by each player
+     */
+    public static class FloorPenalties extends AbstractMetric {
+        
+        public FloorPenalties() {
+            super();
+        }
+        
+        public FloorPenalties(Event.GameEvent... args) {
+            super(args);
+        }
+        
+        @Override
+        public boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
+            AzulGameState state = (AzulGameState) e.state;
+            
+            for (int i = 0; i < state.getNPlayers(); i++) {
+                records.put("Player-" + i, state.getFloorLine(i).getValue());
+                records.put("PlayerName-" + i, listener.getGame().getPlayers().get(i).toString());
+            }
+            
+            return true;
+        }
+        
+        @Override
+        public Set<IGameEvent> getDefaultEventTypes() {
+            return new HashSet<>(Arrays.asList(Event.GameEvent.ACTION_CHOSEN, Event.GameEvent.GAME_OVER));
+        }
+        
+        @Override
+        public Map<String, Class<?>> getColumns(int nPlayersPerGame, Set<String> playerNames) {
+            Map<String, Class<?>> columns = new HashMap<>();
+            for (int i = 0; i < nPlayersPerGame; i++) {
+                columns.put("Player-" + i, Integer.class);
+                columns.put("PlayerName-" + i, String.class);
+            }
+            return columns;
+        }
+    }
+    
+    /**
+     * Tracks the total number of tiles placed on each player's wall
+     */
+    public static class WallTileCount extends AbstractMetric {
+        
+        public WallTileCount() {
+            super();
+        }
+        
+        public WallTileCount(Event.GameEvent... args) {
+            super(args);
+        }
+        
+        @Override
+        public boolean _run(MetricsGameListener listener, Event e, Map<String, Object> records) {
+            AzulGameState state = (AzulGameState) e.state;
+            
+            for (int i = 0; i < state.getNPlayers(); i++) {
+                Wall playerWall = state.getPlayerWall(i);
+                int totalTiles = 0;
+                
                 for (int row = 0; row < 5; row++) {
                     for (int col = 0; col < 5; col++) {
-                        if (wall.isTilePlaced(row, col)) totalTiles++;
+                        if (playerWall.isTilePlaced(row, col)) {
+                            totalTiles++;
+                        }
                     }
                 }
+                
+                records.put("Player-" + i, totalTiles);
+                records.put("PlayerName-" + i, listener.getGame().getPlayers().get(i).toString());
             }
-            records.put("TotalTiles", totalTiles);
+            
             return true;
         }
-
+        
         @Override
         public Set<IGameEvent> getDefaultEventTypes() {
-            return Collections.singleton(GAME_OVER);
+            return new HashSet<>(Arrays.asList(Event.GameEvent.ACTION_CHOSEN, Event.GameEvent.GAME_OVER));
         }
-
+        
         @Override
         public Map<String, Class<?>> getColumns(int nPlayersPerGame, Set<String> playerNames) {
             Map<String, Class<?>> columns = new HashMap<>();
-            columns.put("TotalTiles", Integer.class);
+            for (int i = 0; i < nPlayersPerGame; i++) {
+                columns.put("Player-" + i, Integer.class);
+                columns.put("PlayerName-" + i, String.class);
+            }
             return columns;
         }
     }

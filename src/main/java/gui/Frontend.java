@@ -10,6 +10,7 @@ import gui.models.AITableModel;
 import players.PlayerParameters;
 import players.PlayerType;
 import players.human.ActionController;
+import games.azul.players.AzulRuleBasedPlayer;
 
 import javax.swing.Timer;
 import javax.swing.*;
@@ -111,13 +112,18 @@ public class Frontend extends GUI {
 
         JPanel[] playerOptions = new JPanel[nMaxPlayers];
         JComboBox<String>[] playerOptionsChoice = new JComboBox[nMaxPlayers];  // player is index of this selection
-        String[] playerOptionsString = new String[PlayerType.values().length];
+        String[] playerOptionsString = new String[PlayerType.values().length + 1];  // +1 for our custom player
         // agentParameters contains the defaults (last edited set) of parameters for each agent type
-        agentParameters = new PlayerParameters[PlayerType.values().length];
-        for (int i = 0; i < playerOptionsString.length; i++) {
+        agentParameters = new PlayerParameters[PlayerType.values().length + 1];
+        // First copy all existing player types
+        for (int i = 0; i < PlayerType.values().length; i++) {
             playerOptionsString[i] = PlayerType.values()[i].name();
             agentParameters[i] = PlayerType.values()[i].createParameterSet();
         }
+        // Add our custom RuleBased player
+        playerOptionsString[PlayerType.values().length] = "AzulRuleBased";
+        agentParameters[PlayerType.values().length] = null;  // No parameters needed for our player
+
         // We have one JFrame per player, as different players may use the same agent type with different parameters
         playerParameters = new PlayerParameters[nMaxPlayers];
         playerParameterEditWindow = new JFrame[nMaxPlayers];
@@ -166,21 +172,29 @@ public class Frontend extends GUI {
 
             playerOptionsChoice[i].addActionListener(e -> {
                 int agentIndex = playerOptionsChoice[playerIdx].getSelectedIndex();
-                // set Edit button visible if we have parameters to edit; else make it invisible
-                paramButton.setVisible(agentParameters[agentIndex] != null);
-                fileButton.setVisible(agentParameters[agentIndex] != null);
+                if (agentIndex == PlayerType.values().length) {
+                    // This is our custom RuleBased player
+                    paramButton.setVisible(false);
+                    fileButton.setVisible(false);
+                } else {
+                    // This is a standard player type
+                    paramButton.setVisible(agentParameters[agentIndex] != null);
+                    fileButton.setVisible(agentParameters[agentIndex] != null);
+                }
+                
                 // set up the player parameters with the current saved default for that agent type
-
                 paramButton.removeAll();
                 try {
-                    playerParameters[playerIdx] = (PlayerParameters) agentParameters[agentIndex].copy();
-                    paramButton.addActionListener(f -> {
-                        initialisePlayerParameterWindow(playerIdx, agentIndex);
-                        playerParameterEditWindow[playerIdx].setTitle("Edit parameters " + playerOptionsChoice[playerIdx].getSelectedItem());
-                        playerParameterEditWindow[playerIdx].pack();
-                        playerParameterEditWindow[playerIdx].setVisible(true);
-                        playerParameterEditWindow[playerIdx].setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    });
+                    if (agentIndex < PlayerType.values().length) {
+                        playerParameters[playerIdx] = (PlayerParameters) agentParameters[agentIndex].copy();
+                        paramButton.addActionListener(f -> {
+                            initialisePlayerParameterWindow(playerIdx, agentIndex);
+                            playerParameterEditWindow[playerIdx].setTitle("Edit parameters " + playerOptionsChoice[playerIdx].getSelectedItem());
+                            playerParameterEditWindow[playerIdx].pack();
+                            playerParameterEditWindow[playerIdx].setVisible(true);
+                            playerParameterEditWindow[playerIdx].setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        });
+                    }
                 } catch (Exception ignored) {}
                 pack();
             });
@@ -286,8 +300,16 @@ public class Frontend extends GUI {
                 int nP = Integer.parseInt(nPlayerField.getText());
                 String[] playerNames = new String[nP];
                 for (int i = 0; i < nP; i++) {
-                    AbstractPlayer player = PlayerType.valueOf(playerOptionsChoice[i].getItemAt(playerOptionsChoice[i].getSelectedIndex()))
-                            .createPlayerInstance(seed, humanInputQueue, playerParameters[i]);
+                    int selectedIndex = playerOptionsChoice[i].getSelectedIndex();
+                    AbstractPlayer player;
+                    if (selectedIndex == PlayerType.values().length) {
+                        // Create our custom RuleBased player
+                        player = new AzulRuleBasedPlayer(new Random(seed));
+                    } else {
+                        // Create standard player type
+                        player = PlayerType.valueOf(playerOptionsChoice[i].getItemAt(selectedIndex))
+                                .createPlayerInstance(seed, humanInputQueue, playerParameters[i]);
+                    }
                     playerNames[i] = player.toString();
                     players.add(player);
                 }

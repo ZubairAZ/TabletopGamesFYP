@@ -10,7 +10,9 @@ public class AzulGameParameters extends AbstractParameters {
     private final int nTilesPerType;  // Number of tiles per color
     private final int nRows;  // Number of pattern lines
     private final int nColumns;  // Size of wall grid
-    private final int bonusPoints;  // Points for completing a row/column/set
+    private final int rowBonusPoints;  // Points for completing a row (2)
+    private final int columnBonusPoints;  // Points for completing a column (7)
+    private final int colorSetBonusPoints;  // Points for completing a color set (10)
     private final int penaltyPerFloorTile;  // Penalty points per floor tile
     public String dataPath = "data/azul/";  // Path to game data
     private int nPlayers = 2;  // Default number of players
@@ -23,7 +25,9 @@ public class AzulGameParameters extends AbstractParameters {
         this.nTilesPerType = 20;  // 20 of each color
         this.nRows = 5;
         this.nColumns = 5;
-        this.bonusPoints = 2;
+        this.rowBonusPoints = 2;
+        this.columnBonusPoints = 7;
+        this.colorSetBonusPoints = 10;
         this.penaltyPerFloorTile = -1;
     }
     
@@ -35,7 +39,9 @@ public class AzulGameParameters extends AbstractParameters {
         this.nTilesPerType = 20;  // 20 of each color
         this.nRows = 5;
         this.nColumns = 5;
-        this.bonusPoints = 2;
+        this.rowBonusPoints = 2;
+        this.columnBonusPoints = 7;
+        this.colorSetBonusPoints = 10;
         this.penaltyPerFloorTile = -1;
     }
     
@@ -48,7 +54,9 @@ public class AzulGameParameters extends AbstractParameters {
         this.nTilesPerType = 20;  // 20 of each color
         this.nRows = 5;
         this.nColumns = 5;
-        this.bonusPoints = 2;
+        this.rowBonusPoints = 2;
+        this.columnBonusPoints = 7;
+        this.colorSetBonusPoints = 10;
         this.penaltyPerFloorTile = -1;
     }
 
@@ -57,7 +65,9 @@ public class AzulGameParameters extends AbstractParameters {
     public int getNTilesPerType() { return nTilesPerType; }
     public int getNRows() { return nRows; }
     public int getNColumns() { return nColumns; }
-    public int getBonusPoints() { return bonusPoints; }
+    public int getRowBonusPoints() { return rowBonusPoints; }
+    public int getColumnBonusPoints() { return columnBonusPoints; }
+    public int getColorSetBonusPoints() { return colorSetBonusPoints; }
     public int getPenaltyPerFloorTile() { return penaltyPerFloorTile; }
     public String getDataPath() { return dataPath; }
     public void setDataPath(String dataPath) { this.dataPath = dataPath; }
@@ -84,7 +94,9 @@ public class AzulGameParameters extends AbstractParameters {
                 nTilesPerType == other.nTilesPerType &&
                 nRows == other.nRows &&
                 nColumns == other.nColumns &&
-                bonusPoints == other.bonusPoints &&
+                rowBonusPoints == other.rowBonusPoints &&
+                columnBonusPoints == other.columnBonusPoints &&
+                colorSetBonusPoints == other.colorSetBonusPoints &&
                 penaltyPerFloorTile == other.penaltyPerFloorTile &&
                 nPlayers == other.nPlayers &&
                 Objects.equals(dataPath, other.dataPath);
@@ -93,7 +105,8 @@ public class AzulGameParameters extends AbstractParameters {
     @Override
     public int hashCode() {
         return Objects.hash(nTilesPerFactory, nTilesPerType,
-                nRows, nColumns, bonusPoints, penaltyPerFloorTile,
+                nRows, nColumns, rowBonusPoints, columnBonusPoints,
+                colorSetBonusPoints, penaltyPerFloorTile,
                 dataPath, nPlayers);
     }
     
