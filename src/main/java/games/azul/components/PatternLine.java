@@ -14,13 +14,10 @@ public class PatternLine extends Component {
         super(CoreConstants.ComponentType.BOARD);
         this.capacity = size;
         this.tiles = new AzulTile[size];
-        this.count = 0;
-        this.currentType = null;
     }
 
     public boolean canAdd(AzulTile tile) {
-        if (count >= capacity) return false;
-        return count == 0 || currentType == tile.getTileType();
+        return count < capacity && (count == 0 || currentType == tile.getTileType());
     }
 
     public boolean add(AzulTile tile) {

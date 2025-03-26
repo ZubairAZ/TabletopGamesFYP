@@ -223,8 +223,7 @@ public enum GameType {
     Azul(2, 4,
             Arrays.asList(Strategy, Abstract, TerritoryBuilding),
             Arrays.asList(PatternBuilding, TilePlacement, SetCollection, Drafting),
-            AzulGameState.class, AzulForwardModel.class, AzulGameParameters.class, AzulGUIManager.class,
-            "data/azul/");
+            AzulGameState.class, AzulForwardModel.class, AzulGameParameters.class, AzulGUIManager.class);
 
 
     // Core classes where the game is defined
