@@ -9,6 +9,7 @@ import evaluation.listeners.IGameListener;
 import evaluation.metrics.Event;
 import evaluation.summarisers.TAGNumericStatSummary;
 import games.GameType;
+import games.azul.players.AzulRuleBasedPlayer;
 import gui.AbstractGUIManager;
 import gui.GUI;
 import gui.GamePanel;
@@ -830,14 +831,14 @@ public class Game {
     public static void main(String[] args) {
         String gameType = Utils.getArg(args, "game", "Azul");
         boolean useGUI = Utils.getArg(args, "gui", true);
-        int turnPause = Utils.getArg(args, "turnPause", 0);
+        int turnPause = Utils.getArg(args, "turnPause", 200);
         long seed = Utils.getArg(args, "seed", System.currentTimeMillis());
         ActionController ac = new ActionController();
 
         /* Set up players for the game */
         ArrayList<AbstractPlayer> players = new ArrayList<>();
-        players.add(new HumanGUIPlayer(ac));
-        players.add(new HumanGUIPlayer(ac));
+        players.add(new AzulRuleBasedPlayer());
+        players.add(new AzulRuleBasedPlayer());
 
 //        RMHCParams params = new RMHCParams();
 //        params.horizon = 15;
