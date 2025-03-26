@@ -36,7 +36,6 @@ public class AzulRuleBasedPlayer extends AbstractPlayer {
     }
 
     public AzulRuleBasedPlayer(Random random) {
-        // Use a standard player type naming convention that the metrics system recognizes
         super(null, "RuleBased");
         this.rnd = random;
     }
