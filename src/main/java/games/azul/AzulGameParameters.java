@@ -14,17 +14,12 @@ public class AzulGameParameters extends AbstractParameters {
     private final int columnBonusPoints = 7;
     private final int colorSetBonusPoints = 10;
     private final int penaltyPerFloorTile = -1;
-    public String dataPath = "data/azul/";  // Path to game data
     private int nPlayers = 2;  // Default number of players
 
-    public AzulGameParameters(long seed, String dataPath) {
+    public AzulGameParameters(long seed) {
         super();
         this.setRandomSeed(seed);
-        if (dataPath != null) this.dataPath = dataPath;
     }
-
-    public AzulGameParameters(long seed) { this(seed, null); }
-    public AzulGameParameters(String dataPath) { this(System.currentTimeMillis(), dataPath); }
 
     // Getters for all parameters
     public int getNTilesPerFactory() { return nTilesPerFactory; }
@@ -35,8 +30,6 @@ public class AzulGameParameters extends AbstractParameters {
     public int getColumnBonusPoints() { return columnBonusPoints; }
     public int getColorSetBonusPoints() { return colorSetBonusPoints; }
     public int getPenaltyPerFloorTile() { return penaltyPerFloorTile; }
-    public String getDataPath() { return dataPath; }
-    public void setDataPath(String dataPath) { this.dataPath = dataPath; }
     public int getNPlayers() { return nPlayers; }
     public void setNPlayers(int nPlayers) { this.nPlayers = nPlayers; }
 
@@ -46,7 +39,6 @@ public class AzulGameParameters extends AbstractParameters {
         params.setMaxRounds(getMaxRounds());
         params.setTimeoutRounds(getTimeoutRounds());
         params.setThinkingTimeMins(getThinkingTimeMins());
-        params.dataPath = this.dataPath;
         params.nPlayers = this.nPlayers;
         return params;
     }
@@ -64,8 +56,7 @@ public class AzulGameParameters extends AbstractParameters {
                 columnBonusPoints == other.columnBonusPoints &&
                 colorSetBonusPoints == other.colorSetBonusPoints &&
                 penaltyPerFloorTile == other.penaltyPerFloorTile &&
-                nPlayers == other.nPlayers &&
-                Objects.equals(dataPath, other.dataPath);
+                nPlayers == other.nPlayers;
     }
 
     @Override
@@ -73,7 +64,7 @@ public class AzulGameParameters extends AbstractParameters {
         return Objects.hash(nTilesPerFactory, nTilesPerType,
                 nRows, nColumns, rowBonusPoints, columnBonusPoints,
                 colorSetBonusPoints, penaltyPerFloorTile,
-                dataPath, nPlayers);
+                nPlayers);
     }
     
     public Object instantiate() {

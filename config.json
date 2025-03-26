@@ -1,8 +1,0 @@
-{
-    "game": "Azul",
-    "nPlayers": "2-4",
-    "listener": ["games.azul.listeners.AzulMetricsListener"],
-    "metricsFile": "metrics/azul.json",
-    "destDir": "out",
-    "addTimeStamp": true
-} 
