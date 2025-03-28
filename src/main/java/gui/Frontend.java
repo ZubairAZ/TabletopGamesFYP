@@ -120,9 +120,9 @@ public class Frontend extends GUI {
             playerOptionsString[i] = PlayerType.values()[i].name();
             agentParameters[i] = PlayerType.values()[i].createParameterSet();
         }
-        // Add our custom RuleBased player
+        // Add custom AzulRuleBased player
         playerOptionsString[PlayerType.values().length] = "AzulRuleBased";
-        agentParameters[PlayerType.values().length] = null;  // No parameters needed for our player
+        agentParameters[PlayerType.values().length] = null; 
 
         // We have one JFrame per player, as different players may use the same agent type with different parameters
         playerParameters = new PlayerParameters[nMaxPlayers];
